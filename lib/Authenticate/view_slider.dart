@@ -92,7 +92,11 @@ class _ViewSliderState extends State<ViewSlider> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                   ),
-                  child: const Text('Login',style: TextStyle(fontSize: 24),),
+                  child: const Text('Login',
+
+                    style: TextStyle(fontSize: 24,
+                    color: Colors.white),
+                  ),
                 ),
               ),
             ),

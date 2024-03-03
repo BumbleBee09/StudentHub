@@ -1,11 +1,9 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'otp_page.dart';
 import 'signup_page.dart'; // Import the sign-up page
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -14,6 +12,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _mobileController = TextEditingController();
+  bool _isButtonEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +54,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
+                    onChanged: (value) {
+                      setState(() {
+                        _isButtonEnabled = value.length == 10;
+                      });
+                    },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your mobile number';
@@ -66,16 +70,22 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20.0),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: _isButtonEnabled
+                        ? () {
                       // Redirect to OTP Page
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => OTPPage()),
                       );
-                    },
+                    }
+                        : null,
                     child: const Text('Enter OTP'),
                   ),
-        
+                  if (!_isButtonEnabled)
+                    const Text(
+                      'Please enter a 10-digit mobile number',
+                      style: TextStyle(color: Colors.red),
+                    ),
                   const SizedBox(height: 10.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,

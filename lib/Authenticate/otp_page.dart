@@ -78,7 +78,7 @@ class OTPPage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => HomePage()),
                   );
                 },
-                child: const Text('Signup', style: TextStyle(color: Colors.blue, fontSize: 24)),
+                child: const Text('Login', style: TextStyle(color: Colors.blue, fontSize: 24)),
               ),
               const SizedBox(height: 10.0),
               const Row(
