@@ -105,7 +105,7 @@ class _ViewSliderState extends State<ViewSlider> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.network(
+        Image.asset(
           _slideData[index]['image'],
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.4,
